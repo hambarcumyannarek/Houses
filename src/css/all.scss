@@ -1,0 +1,129 @@
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.section {
+    width: 100%;
+    padding: 50px 20px;
+    @include center();
+}
+
+.container {
+    max-width: 1250px;
+    width: 100%;
+    display: flex;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+        font-size: 2.2em;
+        color: var(--darkBlack);
+    }
+
+    a {
+        font-size: 1.1em;
+        color: var(--lightBlack);
+        transition: all 0.5s;
+
+        i {
+            
+            font-size: 0.9em;
+            transition: all 0.5s;
+        }
+
+        &:hover {
+            i {
+                transform: translateX(5px);
+                color: var(--webColor);
+            }
+            color: var(--webColor);
+        }
+    }
+}
+
+
+.section {
+    .container {
+        .slider {
+            @include center();
+            position: relative;
+            width: 100%;
+            .cont {
+                overflow: hidden;
+                padding: 20px 0px;
+                @include center();
+            }
+            .lRBtn {
+                position: absolute;
+                display: none;
+                top: 50%; transform: translateY(-50%); 
+                font-size: 1em;
+                color: var(--darkBlack);
+                box-shadow: 0 0 15px 2px rgba(0,0,0,0.2);
+                z-index: 10;
+                width: 40px;
+                height: 40px;
+                @include center();
+                border-radius: 50%;
+                cursor: pointer;
+                text-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
+                transition: all 0.3s;
+        
+                &:hover {
+                    color: var(--webColor);
+                }
+        
+                &[disabled] {
+                    color: var(--webColor);
+                }
+            }
+        
+            .left {
+                left: 0px;
+            }
+        
+            .right {
+                right: 0px;
+            }
+        
+            .circle {
+                position: absolute;
+                bottom: -50px;
+                @include center();
+                gap: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 100;
+        
+                .circleBtn {
+                    width: 16px;
+                    height: 8px;
+                    background: rgba(0,0,0,0.3);
+                    border-radius: 30px;
+                    cursor: pointer;
+        
+                    &.bold {
+                        width: 32px;
+                        background: rgba(0,0,0,0.6);
+                        transition: all 0.5s;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1000px) {
+ .container {
+    max-width: 750px;
+ }   
+}

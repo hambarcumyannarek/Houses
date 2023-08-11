@@ -1,0 +1,284 @@
+@import './all.scss';
+
+nav {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 1000000;
+    width: 100%;
+    padding: 20px 20px;
+    background: transparent;
+    @include center();
+    transition: all 0.2s;
+
+    &.active {
+        background: var(--white);
+        filter: drop-shadow(0px 6px 3px rgba(0, 0, 0, 0.1));
+    }
+
+    .responsiveMenu {
+        display: none;
+        background: var(--white);
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        .logo {
+            @include center();
+            gap: 5px;
+            i {
+                font-size: 1.7em;
+                color: var(--webColor);
+            }
+            span {
+                color: var(--darkBlack);
+                font-size: 1.3em;
+                    font-weight: normal;
+                }
+            }
+
+        .links {
+            @include center();
+            gap: 55px;
+            .link {
+                font-size: 16px;
+                color: var(--lightBlack);
+                cursor: pointer;
+                font-weight: bold;
+                transition: all 0.5s;
+
+                &:hover {
+                    color: var(--webColor);
+                }
+            }
+            .big {
+                position: relative;
+                .bigLink {
+                    display: flex;
+                    align-items: center;
+                    gap: 3px;
+
+                    i {
+                        font-size: 12px;
+                    }
+                }
+                ul {
+                    position: absolute;
+                    background: var(--white);
+                    @include center();
+                    flex-direction: column;
+                    gap: 10px;
+                    width: 150px;
+                    bottom: -95px;
+                    opacity: 0;
+                    left: -10px;
+                    padding: 15px;
+                    border-radius: 5px;
+                    box-shadow: var(--boxShodowBlack);
+                    visibility: hidden;
+                    transition: all 0.5s;
+
+                    &.active {
+                        visibility: visible;
+                        opacity: 1;
+                        bottom: -90px;
+                    }
+
+                    &:hover {  
+                        visibility: visible;
+                        opacity: 1;
+                        bottom: -90px; 
+                    }
+                    
+                    li {
+                         a {
+                            color: var(--lightBlack);
+                            font-size: 15px;
+                            transition: all 0.5s;
+
+                            &:hover {   
+                                color: var(--webColor);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .icons {
+            @include center();
+            gap: 15px;
+
+            .onlyIcon {
+                width: 45px;
+                font-size: 1.1em;
+            }
+            .icon {
+                padding: 12px;
+                height: 45px;
+                @include center();
+                background: var(--webColor);
+                color: var(--white);
+                gap: 5px;
+                border-radius: 5px;
+                transition: 0.5s; 
+
+                &:hover {
+                    box-shadow: var(--boxShadowWeb);
+                }
+
+                &.respBtn {
+                    display: none;
+                }
+            }
+
+            .strB {
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    nav {
+        .nav-container {
+            .links {
+                gap: 20px;
+            }
+        }       
+    }
+}
+
+
+@media screen and (max-width: 720px) {
+    nav {
+        .nav-container {
+            .links {
+                display: none;
+            }
+            .icons {
+                .icon {
+                    &.respBtn {
+                        display: flex;
+                    }
+                }
+            }
+        } 
+        
+                
+        .responsiveMenu {
+            display: flex;
+            position: fixed;
+            top: 85px;left: 0;
+            padding: 20px;
+            width: 100%;
+            @include center();
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transition: all .5s;
+            
+            .links {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                .link {      
+                    width: 100%;
+                    border-radius: 5px;
+                    border: 1px solid var(--lightBlack);
+                    padding: 12px;
+                    span {
+                        display: flex;
+                        justify-content: space-between;
+                        transition: all 0.5s;
+                        color: var(--darkBlack);
+                        font-size: 1.1em;
+                    }
+
+
+                    &:hover {
+                        span {
+                            color: var(--webColor);
+                        }
+                    }
+                } 
+
+                .big {
+                    display: flex;
+                    flex-direction: column; 
+                    gap: 10px;
+
+                    .bacvi {
+                        display: none;
+                        flex-direction: column;
+                        gap: 5px;
+                        height: 0;
+                        overflow: hidden;
+                        border-left: 3px solid rgba(0,0,0,0.3);
+                        transition: all .5s;
+
+                        a {        
+                            margin-left: 15px;
+                            font-size: 0.9em;
+                            color: var(--darkBlack);
+
+                            &:hover {
+                                color: var(--webColor);
+                            }
+                        }
+                    }
+                    
+                    &.active {
+                        span {
+                            color: var(--webColor);
+                        }
+                        .bacvi { 
+                            display: flex;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        .nav-container {
+            .icons {
+                button {   
+                    width: 45px;  
+                    font-size: 1.3em;
+                    span {
+                        display: none;
+                    }
+                }  
+             }
+        } 
+    }
+}
+
+@media screen and (max-width: 375px) {
+    nav {
+        .nav-container {
+            .icons {
+                .icon {   
+                    width: 40px; 
+                    height: 40px;
+                    padding: 5px;
+                    font-size: 1.1em;
+                }  
+             }
+        }       
+    }
+}

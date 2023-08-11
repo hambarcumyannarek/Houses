@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["index.js"],"sourcesContent":["import { pName } from \"./index2\";\r\nconsole.log('name : ' + pName);"],"file":"index.js"}
